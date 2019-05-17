@@ -3,6 +3,7 @@ from beem import Steem
 from beem.instance import set_shared_steem_instance
 from beem.account import Account
 from steembi.storage import AccountsDB, KeysDB
+import time
 
 with open('scot_token_list', 'r') as tokenlist:
 	tokens = tokenlist.read().splitlines()
@@ -46,5 +47,4 @@ for account in accounts:
 		json_dict = {"symbol":scot_token}
 		stm.custom_json('scot_claim_token', json_dict, required_posting_auths=[account])
 		print "Claimed " + scot_token + " rewards for " + account
-
-	
+		time.sleep(4)
